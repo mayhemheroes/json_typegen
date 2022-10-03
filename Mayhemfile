@@ -1,0 +1,6 @@
+project: json_typegen
+target: json-parser-fuzz
+
+cmds:
+    - cmd: ./json-parser-fuzz
+      libfuzzer: true
