@@ -1,17 +1,17 @@
 #![no_main]
 
 use libfuzzer_sys::arbitrary;
-use libfuzzer_sys::arbitrary::Unstructured;
+use libfuzzer_sys::arbitrary::{Arbitrary, Unstructured};
 use libfuzzer_sys::fuzz_target;
 
 use json_typegen_shared::{codegen, Options, OutputMode};
 
 fuzz_target!(|data: &[u8]| {
-    let mut u = arbitrary::Unstructured::new(data);
+    let mut u = Unstructured::new(data);
     let options = arbitrary_options(&mut u).unwrap();
 
-    let source = u.arbitrary().unwrap();
     let name = u.arbitrary().unwrap();
+    let source = Arbitrary::arbitrary_take_rest(u).unwrap();
 
     let _ = codegen(name, source, options);
 });
