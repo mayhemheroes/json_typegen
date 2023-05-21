@@ -23,3 +23,9 @@ name = "json-parser-fuzz"
 path = "fuzz_targets/json-parser-fuzz.rs"
 test = false
 doc = false
+
+[[bin]]
+name = "json-codegen-fuzz"
+path = "fuzz_targets/json-codegen-fuzz.rs"
+test = false
+doc = false

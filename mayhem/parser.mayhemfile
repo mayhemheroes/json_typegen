@@ -1,4 +1,4 @@
-project: json_typegen
+project: json-typegen
 target: json-parser-fuzz
 
 cmds:
